@@ -1,0 +1,19 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  overflow-y: auto;
+}
+.dashboard-header {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  padding: 1rem;
+  text-align: center;
+}
