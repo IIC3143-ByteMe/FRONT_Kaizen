@@ -39,6 +39,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
+      
       <h1>Iniciar Sesión</h1>
       <form onSubmit={handleSubmit}>
         <input
