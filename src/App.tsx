@@ -5,6 +5,7 @@ import Users from './routes/Users'
 import HabitTemplates from './routes/HabitTemplates'
 import Analytics from './routes/Analytics'
 import PrivateRoute from './components/PrivateRoute'
+import LandingPage from './routes/Landing'
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
 
         {/* Página de login */}
         <Route path="/login" element={<Login />} />
+
+        {/* landing */}
+        <Route path="/landing-page" element={<LandingPage />} />
 
         {/* Rutas protegidas */}
         <Route
