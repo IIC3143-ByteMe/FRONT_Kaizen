@@ -31,8 +31,12 @@ export default function Login() {
 
       // Redirigir al dashboard
       navigate('/dashboard')
-    } catch (err: any) {
-      console.error('Error en inicio de sesión:', err)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('Error en inicio de sesión:', err.message)
+      } else {
+        console.error('Error desconocido en inicio de sesión')
+      }
       setError('Credenciales inválidas o error del servidor')
     }
   }
