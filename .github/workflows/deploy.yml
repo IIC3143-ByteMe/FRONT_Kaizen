@@ -9,6 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_USE_AUTH: ${{ secrets.VITE_USE_AUTH }}
       GITHUB_PAGES: 'true'
 
     permissions:
@@ -33,9 +35,6 @@ jobs:
 
       - name: Build the app
         run: npm run build
-        env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          VITE_USE_AUTH: ${{ secrets.VITE_USE_AUTH }}
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
