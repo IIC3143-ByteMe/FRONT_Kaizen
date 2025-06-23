@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
 
         {/* landing */}
-        <Route path="/landing-page" element={<LandingPage />} />
+        <Route path="/landing" element={<LandingPage />} />
 
         {/* Rutas protegidas */}
         <Route
@@ -30,9 +30,9 @@ export default function App() {
           }
         >
           <Route path="users" element={<Users />} />
-          <Route path="habits" element={<HabitTemplates />} />
           <Route path="analytics" element={<Analytics />} />
         </Route>
+        <Route path="/templates" element={<HabitTemplates />} />
       </Routes>
     </BrowserRouter>
   )

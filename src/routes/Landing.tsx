@@ -1,4 +1,4 @@
-import Button from "../components/Button"
+import Button from "../components/Button/Button.tsx"
 import {Card, CardContent} from "../components/Card"
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom'
@@ -120,3 +120,14 @@ export default function LandingPage() {
     </div>
   );
 }
+
+// const styles = {
+//   button: "bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200",
+//   card: "bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-200",
+//   featureIcon: "text-4xl mb-4",
+//   featureTitle: "text-xl font-semibold mb-2",
+//   featureDescription: "text-gray-600",
+//   footer: "bg-gray-100 py-4 text-sm text-gray-500",
+//   heroTitle: "text-4xl lg:text-5xl font-bold mb-4",
+//   heroSubtitle: "text-lg lg:text-xl mb-6"
+// }
