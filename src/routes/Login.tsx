@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button/Button'
 import axios from 'axios'
 import { style } from 'framer-motion/client'
+import Navbar from '../components/Navbar'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -44,6 +45,8 @@ export default function Login() {
   }
 
   return (
+    <>
+      <Navbar />
     <div className="container">
       
       <h1 className='title'>KaizenApp</h1>
@@ -67,7 +70,8 @@ export default function Login() {
         </Button>
       </form>
     </div>
-  )
+    </>
+  );
 }
 
 const estilo = {
