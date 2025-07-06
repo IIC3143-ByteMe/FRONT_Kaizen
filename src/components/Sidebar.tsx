@@ -11,7 +11,7 @@ export default function Sidebar() {
           <Link to="/dashboard/users">Usuarios</Link>
         </li>
         <li>
-          <Link to="/dashboard/habits">Plantillas de Hábitos</Link>
+          <Link to="/templates">Plantillas de Hábitos</Link>
         </li>
         <li>
           <Link to="/dashboard/analytics">Analytics</Link>

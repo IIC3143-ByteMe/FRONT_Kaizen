@@ -1,8 +1,6 @@
-    // src/components/Navbar.jsx
-    import { Link } from 'react-router-dom'; // Assuming you use React Router
+    import { Link } from 'react-router-dom';
 
     const Navbar = () => {
-
       return (
         <nav className="flex-column space-x-3">
           <Link to="/">My Logo</Link>

@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button/Button'
 import axios from 'axios'
-// import { style } from 'framer-motion/client'
 import Navbar from '../components/Navbar'
-import '../styles/Login.css'
+import "../styles/Login.css"
 
 export default function Login() {
   const navigate = useNavigate()
