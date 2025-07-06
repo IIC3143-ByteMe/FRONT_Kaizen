@@ -1,5 +1,3 @@
-/* styles.css */
-
 .loginInput {
   border-radius: 6px;
   border-style: solid;
@@ -15,7 +13,6 @@
   outline: none;
 }
 
-/* Si usas <form className="form"> … */
 .form {
   display: flex;
   flex-direction: column;

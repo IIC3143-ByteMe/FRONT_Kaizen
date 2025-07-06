@@ -1,4 +1,5 @@
 import './Sidebar.css'
+import { Link } from 'react-router-dom'
 import LogoutButton from './LogoutButton';
 
 export default function Sidebar() {
@@ -6,10 +7,18 @@ export default function Sidebar() {
     <nav className="sidebar">
       <h2>Admin</h2>
       <ul>
-        <li><a href="/dashboard/users">Usuarios</a></li>
-        <li><a href="/templates">Plantillas de Hábitos</a></li>
-        <li><a href="/dashboard/analytics">Analytics</a></li>
-        <li><LogoutButton /></li>
+        <li>
+          <Link to="/dashboard/users">Usuarios</Link>
+        </li>
+        <li>
+          <Link to="/templates">Plantillas de Hábitos</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/analytics">Analytics</Link>
+        </li>
+        <li>
+          <LogoutButton />
+        </li>
       </ul>
     </nav>
   );

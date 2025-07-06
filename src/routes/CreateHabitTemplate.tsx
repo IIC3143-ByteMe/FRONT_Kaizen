@@ -77,7 +77,6 @@ const ikigaiCategoryOptions: Option[] = [
 const goalPeriodOptions: Option[] = [
     {label: "Diariamente", value: "daily"}
 ]
-
 export default function CreateHabitTemplate() {
 
     const [title, setTitle] = useState('');
