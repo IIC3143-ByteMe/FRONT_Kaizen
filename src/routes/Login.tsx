@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button/Button'
 import axios from 'axios'
+import { style } from 'framer-motion/client'
+import Navbar from '../components/Navbar'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -42,25 +45,67 @@ export default function Login() {
   }
 
   return (
-    <div className="login-page">
+    <>
+      <Navbar />
+    <div className="container">
       
-      <h1>Iniciar Sesión</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+      <h1 className='title'>KaizenApp</h1>
+      <p style={estilo.bajada}>Panel de administradores</p>
+      <form onSubmit={handleSubmit} style={estilo.form}>
+        <input style={estilo.loginInput}
           type="email"
           placeholder="Correo electrónico"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
+        <input style={estilo.loginInput}
           type="password"
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p style={{ color: 'red' }}>{error}</p>} {/* Mostrar error si existe */}
-        <button type="submit">Entrar</button>
+        <Button type="submit">
+          Entrar
+        </Button>
       </form>
     </div>
-  )
+    </>
+  );
+}
+
+const estilo = {
+  loginInput: {
+    borderRadius: '6px',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    borderColor: '#ccc',
+    padding: '10px',
+    marginBottom: '10px',
+    width: '100%',
+    focus: {
+      borderColor: '#819DFB',
+      outline: 'none',
+    }
+
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '20vh',
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bajada: {
+    fontSize: '2rem',
+    color: '#666',
+    marginTop: '0px',
+    marginBottom: '50px',
+    textAlign: 'center', }
 }
