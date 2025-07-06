@@ -41,7 +41,7 @@ export default function Dropdown<T extends string | string[]>({
             <select
             // TODO: cambiar directamente en este componente el estilo al de la app
             className="border border-gray-300 rounded-md p-2"
-            value={value as any}
+            value={value as unknown as string | string[]}
             onChange={handleChange}
             multiple={multiple}
             > 
