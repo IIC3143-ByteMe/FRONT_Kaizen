@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './routes/Login'
 import Users from './routes/Users'
 import HabitTemplates from './routes/HabitTemplates'
@@ -10,7 +10,7 @@ import PrivateRoute from './components/PrivateRoute'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
@@ -24,6 +24,6 @@ export default function App() {
           <Route path="/create-template" element={<CreateHabitTemplate />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
