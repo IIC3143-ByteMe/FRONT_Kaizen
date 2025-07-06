@@ -5,6 +5,7 @@ import HabitTemplates from './routes/HabitTemplates'
 import Analytics from './routes/Analytics'
 import LandingPage from './routes/Landing'
 import CreateHabitTemplate from './routes/CreateHabitTemplate'
+import DashboardLayout from './routes/DashboardLayout'
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
 
         <Route path="/landing" element={<LandingPage />} />
 
-        <Route path="/dashboard" />
+        <Route path="/dashboard" element={<DashboardLayout />}/>
 
         <Route path="/users" element={<Users />} />
 

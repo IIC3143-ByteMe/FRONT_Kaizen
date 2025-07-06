@@ -7,7 +7,7 @@ export default function Sidebar() {
       <h2>Admin</h2>
       <ul>
         <li><a href="/dashboard/users">Usuarios</a></li>
-        <li><a href="/dashboard/habits">Plantillas de Hábitos</a></li>
+        <li><a href="/templates">Plantillas de Hábitos</a></li>
         <li><a href="/dashboard/analytics">Analytics</a></li>
         <li><LogoutButton /></li>
       </ul>
