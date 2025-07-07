@@ -8,13 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     env:
       VITE_API_URL: ${{ secrets.VITE_API_URL }}
       VITE_USE_AUTH: ${{ secrets.VITE_USE_AUTH }}
       GITHUB_PAGES: 'true'
-
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout repo
@@ -28,15 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Configure Git identity
+      - name: Build app for GitHub Pages
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Build the app
-        run: npm run build
+          npm run build
+          cp dist/index.html dist/404.html
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
