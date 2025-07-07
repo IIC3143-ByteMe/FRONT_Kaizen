@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import LogoutButton from '../LogoutButton';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, it, expect, jest } from '@jest/globals';
+import { describe, it, expect } from '@jest/globals';
 
 
 describe('LogoutButton', () => {
