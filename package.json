@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r https://x-access-token:${GH_TOKEN}@github.com/IIC3143-ByteMe/FRONT_Kaizen.git"
+    "deploy": "gh-pages -d dist -r https://x-access-token:${GH_TOKEN}@github.com/IIC3143-ByteMe/FRONT_Kaizen.git",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^1.9.0",
@@ -20,6 +23,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^22.15.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
