@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+}
+
+.everyting-besides-the-sidebar {
+    flex: 9;
+}
+
+.sidebar-container {
+    flex: 1;
+}

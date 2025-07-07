@@ -22,14 +22,12 @@
     border-color 0.2s ease-in-out;
 }
 
-/* focus:outline-none focus:ring-2 focus:ring-offset-2 */
 .button:focus {
-  outline: none;                    /* quita el borde por defecto */
-  outline: 2px solid currentColor;  /* “ring-2” del color actual */
-  outline-offset: 2px;              /* “ring-offset-2” */
+  outline: none;                   
+  outline: 2px solid currentColor; 
+  outline-offset: 2px;          
 }
 
-/* comportamiento global cuando está deshabilitado */
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -37,21 +35,21 @@
 
 /* --- variantes --- */
 .button--primary {
-  background-color: #6a8cfb;        /* Tailwind blue-600 */
+  background-color: #6a8cfb;
   color: #ffffff;
 }
 
 .button--primary:hover:not(:disabled) {
-  background-color: #819DFB;        /* blue-700 */
+  background-color: #819DFB;
 }
 
 .button--primary:focus {
-  outline-color: #819DFB;           /* blue-400 */
+  outline-color: #819DFB;
 }
 
 .button--secondary {
-  background-color: #f3f4f6;        /* gray-100 */
-  color: #111827;                   /* gray-900 */
+  background-color: #f3f4f6;
+  color: #111827;     
 }
 
 .button--secondary:hover:not(:disabled) {

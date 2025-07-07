@@ -1,3 +1,3 @@
 export default function Analytics() {
-  return <h1>Analytics Page</h1>
+  return <h1 className="title">Estadísticas</h1>
 }

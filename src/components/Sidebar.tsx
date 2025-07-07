@@ -5,16 +5,16 @@ import LogoutButton from './LogoutButton';
 export default function Sidebar() {
   return (
     <nav className="sidebar">
-      <h2>Admin</h2>
+      <h2>Panel de Administrador</h2>
       <ul>
         <li>
-          <Link to="/dashboard/users">Usuarios</Link>
+          <Link to="/users">Usuarios</Link>
         </li>
         <li>
           <Link to="/templates">Plantillas de Hábitos</Link>
         </li>
         <li>
-          <Link to="/dashboard/analytics">Analytics</Link>
+          <Link to="/analytics">Estadísticas</Link>
         </li>
         <li>
           <LogoutButton />

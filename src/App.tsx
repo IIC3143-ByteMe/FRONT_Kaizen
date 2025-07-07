@@ -7,9 +7,11 @@ import LandingPage from './routes/Landing'
 import CreateHabitTemplate from './routes/CreateHabitTemplate'
 import DashboardLayout from './routes/DashboardLayout'
 import PrivateRoute from './components/PrivateRoute'
+import Sidebar from './components/Sidebar'
 
 export default function App() {
   return (
+    <>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
@@ -25,5 +27,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </>
   )
 }
