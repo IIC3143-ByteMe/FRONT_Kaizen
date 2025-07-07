@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.bajada {
+    width: 50%;
+    font-size: 1em;
+    margin-top: 20px;;
+}
+
+.in-button-link {
+    color: #f1f5f9;
+    height: 25px;
+    margin-top: 5px;;
+}
+
+.in-button-link {
+    color: #f9f9f9;
+}
+
+.tus-plantillas-container {
+    margin-top: 80px;
+    width: 70%;
+    border-top: 2px solid #646cff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

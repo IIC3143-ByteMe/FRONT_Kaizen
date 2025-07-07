@@ -1,29 +1,71 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import "./HabitTemplates.css"
-import { div } from "framer-motion/client";
+import "../styles/HabitTemplates.css"
+import Button from "../components/Button/Button";
+import { useState, useEffect } from "react";
+import type { HabitTemplateComponentType } from "../lib/types";
+import HabitTemplateComponent from "../components/HabitTemplateComponent";
+import { getToken } from "../lib/auth";
 
 export default function HabitTemplates() {
+
+  const [templates, setTemplates] = useState<HabitTemplateComponentType[] | undefined>(undefined);  // hacer props de habits
+  const [isLoadig, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    async function fetchTemplates() {
+      try {
+        const res = await fetch(`${apiUrl}/habits/templates`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...(getToken() ? {"Authorization": `Bearer ${getToken()}`} : {})
+          }
+        });
+        console.log("Server response: ", res);
+        if (!res.ok) throw new Error("Failed to fetch.")
+
+        const data: HabitTemplateComponentType[] = await res.json();
+
+        if (data.length === 0){
+          console.warn("No hay templates creados")
+        } else {
+        setTemplates(data);
+        }
+      } catch (error) {
+          console.error(error);
+          setIsError(true);
+      }
+    }
+
+    fetchTemplates();
+  }, [])
+
   return (  
     <div className="container">
-      <div className="sidebar-container">
       <Sidebar />
-      </div>
-      <div className="everything-besides-the-sidebar">
         <p className="title">Plantillas</p>
-        <p>En este lugar, puedes crear plantillas para hábitos, los que después pueden importar directamente los usuarios, y usarlos tal como los configures aquí</p>
-        <Link to="/create-template">Agregar plantilla</Link>
-        <p>(Aquí poner toda la lista de plantillas)</p>
-      </div>
+        <p className="bajada">En este lugar, puedes crear plantillas para hábitos, los que después pueden importar directamente los usuarios, y usarlos tal como los configures aquí</p>
+
+        <Button variant="primary">
+        <Link className="in-button-link" to="/create-template">Agregar plantilla</Link>
+        </Button>
+
+        {isError && <p style={{ color: "red" }}>Error al cargar las plantillas.</p>}
+        {isLoadig && !isError && <p>Cargando…</p>}
+
+        <div className="tus-plantillas-container">
+          <p className="subtitle">Tus Plantillas</p>
+                {/* Lista de plantillas */}
+          {templates?.length ? (
+            templates.map((template) => <HabitTemplateComponent key={template.habitName} template={template}/>)
+          ) : (
+            !isLoadig && <p>Aún no has creado plantillas.</p>
+          )}
+        </div>
     </div>
-    // <div className="container">
-    //     <Sidebar />
-    //     <div className="everything-besides-the-sidebar">
-    //       <p className="title">Plantillas</p>
-    //       <p>En este lugar, puedes crear plantillas para hábitos, los que después pueden importar directamente los usuarios, y usarlos tal como los configures aquí</p>
-    //       <Link to="/create-template">Agregar plantilla</Link>
-    //       <p>(Aquí poner toda la lista de plantillas)</p>
-    //     </div>
-    // </div>
-);
+  );
 }

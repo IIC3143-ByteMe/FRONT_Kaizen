@@ -1,6 +1,8 @@
-import { Navigate, Outlet } from 'react-router-dom'
-import { isAuthenticated } from '../lib/auth'
+// components/PrivateRoute.tsx
+import { Navigate, Outlet } from 'react-router-dom';
+import { isAuthenticated } from '../lib/auth';
 
 export default function PrivateRoute() {
-  return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />
+  const token = isAuthenticated() ? <Outlet /> : <Navigate to="/login" replace />;
+  return Boolean(token);
 }

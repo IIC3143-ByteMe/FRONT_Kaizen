@@ -3,7 +3,8 @@ import Dropdown from "../components/Dropdown";
 import type { Option } from "../components/Dropdown";
 import Sidebar from "../components/Sidebar";
 import { getToken } from "../lib/auth";
-import "./CreateHabitTemplate.css"
+import "../styles/CreateHabitTemplate.css"
+import Button from "../components/Button/Button";
 
 
 const apiUrl = import.meta.env.VITE_API_URL
@@ -106,9 +107,9 @@ export default function CreateHabitTemplate() {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [icon, setIcon] = useState('');
-    const [color, setColor] = useState('');
-    const [group, setGroup] = useState('');
+    const [icon, setIcon] = useState(''); // running
+    const [color, setColor] = useState(''); // #A4B1FF
+    const [group, setGroup] = useState(''); // Healthy
     const [habit_type, setHabitType] = useState('');
     const [goal_period, setGoalPeriod] = useState('');
     const [goal_value, setGoalValue] = useState('');
@@ -149,6 +150,7 @@ export default function CreateHabitTemplate() {
             published: true
         };
 
+        // NOTE: Descomenten cuando se quiera testear, pero no dejar en consola, no lo debería poder ver el cliente
         console.log("Enviando datos: ", data);
 
        fetch(`${apiUrl}/habits/templates`, {
@@ -183,16 +185,20 @@ export default function CreateHabitTemplate() {
                     <input type="text"
                     value={title}
                     onChange={(t) => setTitle(t.target.value)}
-                    className="label-item"/>
+                    className="label-item"
+                    required
+                    />
                 </div>
 
                 <div className="input-item">
                     <label className="label-text">Descripción del hábito</label>
-                    <input type="text"
+                    <textarea
                     value={description}
                     onChange={(d) => setDescription(d.target.value)}
                     className="label-item"
-                    id="descripcion"/>
+                    id="descripcion"
+                    rows={4}
+                    required/>
                 </div>
 
                 <div className="input-item">
@@ -259,6 +265,7 @@ export default function CreateHabitTemplate() {
                         onChange={(g) => Number(setGoalValue(g.target.value))}
                         className="label-item"
                         min={1}
+                        required
                     />
                 </div>
 
@@ -288,22 +295,13 @@ export default function CreateHabitTemplate() {
                     onChange={(t) => setReminders([t.target.value])}
                     className="label-item"
                     step={60} 
+                    required
                     />
                 </div>
 
-                {/* <Dropdown
-                label="Categoría Ikigai del hábito"
-                options={ikigaiCategoryOptions}
-                value={ikigai_category}
-                onChange={setIkigaiCategory}
-                /> */}
-
-                <button
-                    type="submit"
-                    className="primary-button"
-                >
-                    Guardar
-                </button>
+                <Button variant="primary">
+                    Crear
+                </Button>
              </form>
         </main>
     )

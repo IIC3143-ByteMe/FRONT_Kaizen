@@ -1,5 +1,5 @@
 import React from "react";
-import "../routes/CreateHabitTemplate.css"
+import "../styles/CreateHabitTemplate.css"
 
 export interface Option<T extends string = string> {
     label: string;
@@ -48,10 +48,12 @@ export default function Dropdown<T extends string | string[]>({
             value={value as any}
             onChange={handleChange}
             multiple={multiple}
+            id={multiple ? "multiple-item" : undefined}
+            size={multiple ? Math.min(options.length, 8) : undefined}
             > 
 
             {!multiple && (
-            <option className="option-item" id="taskdaysselect" value="" disabled hidden>
+            <option value="" disabled hidden>
                 Selecciona una opción
             </option>
             )}
