@@ -3,10 +3,8 @@ import Login from './routes/Login'
 import Users from './routes/Users'
 import HabitTemplates from './routes/HabitTemplates'
 import Analytics from './routes/Analytics'
-import LandingPage from './routes/Landing'
 import CreateHabitTemplate from './routes/CreateHabitTemplate'
 import DashboardLayout from './routes/DashboardLayout'
-import PrivateRoute from './components/PrivateRoute'
 
 export default function App() {
   return (

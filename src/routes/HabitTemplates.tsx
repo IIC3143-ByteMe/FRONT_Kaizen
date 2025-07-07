@@ -10,7 +10,7 @@ import { getToken } from "../lib/auth";
 export default function HabitTemplates() {
 
   const [templates, setTemplates] = useState<HabitTemplateComponentType[] | undefined>(undefined);  // hacer props de habits
-  const [isLoadig, setIsLoading] = useState(true);
+  const [isLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -55,7 +55,7 @@ export default function HabitTemplates() {
         </Button>
 
         {isError && <p style={{ color: "red" }}>Error al cargar las plantillas.</p>}
-        {isLoadig && !isError && <p>Cargando…</p>}
+        {isLoading && !isError && <p>Cargando…</p>}
 
         <div className="tus-plantillas-container">
           <p className="subtitle">Tus Plantillas</p>
@@ -63,7 +63,7 @@ export default function HabitTemplates() {
           {templates?.length ? (
             templates.map((template) => <HabitTemplateComponent key={template.habitName} template={template}/>)
           ) : (
-            !isLoadig && <p>Aún no has creado plantillas.</p>
+            !isLoading && <p>Aún no has creado plantillas.</p>
           )}
         </div>
     </div>
