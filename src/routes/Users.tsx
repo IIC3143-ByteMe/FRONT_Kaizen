@@ -1,3 +1,3 @@
 export default function Users() {
-  return <h1>Users Page</h1>
+  return <h1 className="title">Gestión de Usuarios</h1>
 }

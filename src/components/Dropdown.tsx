@@ -1,3 +1,6 @@
+import React from "react";
+import "../styles/CreateHabitTemplate.css"
+
 export interface Option<T extends string = string> {
     label: string;
     value: T;
@@ -35,15 +38,18 @@ export default function Dropdown<T extends string | string[]>({
     };
 
     return (
-        <label className="flex flex-col gap-1">
+        <div className="input-item">
+        <label className="label-text">
             {label && <span className="font-medium">{label}</span>}
 
             <select
             // TODO: cambiar directamente en este componente el estilo al de la app
-            className="border border-gray-300 rounded-md p-2"
+            className="select-item"
             value={value as unknown as string | string[]}
             onChange={handleChange}
             multiple={multiple}
+            id={multiple ? "multiple-item" : undefined}
+            size={multiple ? Math.min(options.length, 8) : undefined}
             > 
 
             {!multiple && (
@@ -53,11 +59,12 @@ export default function Dropdown<T extends string | string[]>({
             )}
 
             {options?.map((o) => (
-                <option key={o.value} value={o.value}>
+                <option className="option-item" key={o.value} value={o.value}>
                     {o.label}
                 </option>
             ))}
             </select>
         </label>
+        </div>
     );
 }

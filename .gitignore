@@ -1,3 +1,5 @@
+# NOTE: este .env es una convención para React por si acaso, para que se considere agregar más cosas
+
 # Logs
 logs
 *.log
@@ -23,3 +25,5 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+cypress
