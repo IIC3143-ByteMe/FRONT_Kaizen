@@ -17,7 +17,7 @@ describe('Login page', () => {
   });
 
   it('realiza login exitoso y redirige al dashboard', () => {
-    cy.get('input[type="email"]').type('antonio.doberti@uc.cl');
+    cy.get('input[type="email"]').type('admin@gmail.com');
     cy.get('input[type="password"]').type('admin123');
     cy.get('button[type="submit"]').click();
 
