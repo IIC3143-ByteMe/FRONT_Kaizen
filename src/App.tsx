@@ -1,17 +1,16 @@
-// App.tsx
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
-import Login from './routes/Login';
-import DashboardLayout from './routes/DashboardLayout';
-import Users from './routes/Users';
-import HabitTemplates from './routes/HabitTemplates';
-import Analytics from './routes/Analytics';
-import CreateHabitTemplate from './routes/CreateHabitTemplate';
-import PrivateRoute from './components/PrivateRoute';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Login from './routes/Login'
+import Users from './routes/Users'
+import HabitTemplates from './routes/HabitTemplates'
+import Analytics from './routes/Analytics'
+import LandingPage from './routes/Landing'
+import CreateHabitTemplate from './routes/CreateHabitTemplate'
+import DashboardLayout from './routes/DashboardLayout'
+import PrivateRoute from './components/PrivateRoute'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* públicas */}
         <Route path="/" element={<Navigate to="/login" replace />} />
@@ -36,6 +35,6 @@ export default function App() {
         {/* 404 opcional */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </BrowserRouter>
-  );
+    </HashRouter>
+  )
 }

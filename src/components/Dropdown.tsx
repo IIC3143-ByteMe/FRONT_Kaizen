@@ -45,7 +45,7 @@ export default function Dropdown<T extends string | string[]>({
             <select
             // TODO: cambiar directamente en este componente el estilo al de la app
             className="select-item"
-            value={value as any}
+            value={value as unknown as string | string[]}
             onChange={handleChange}
             multiple={multiple}
             id={multiple ? "multiple-item" : undefined}
