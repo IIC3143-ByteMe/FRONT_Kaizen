@@ -13,9 +13,10 @@ export default function HabitTemplates() {
   const [isLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   
+  const apiUrl = import.meta.env.VITE_API_URL;
+  
   useEffect(() => {
 
-    const apiUrl = import.meta.env.VITE_API_URL;
     
     async function fetchTemplates() {
       try {
