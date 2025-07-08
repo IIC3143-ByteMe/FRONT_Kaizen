@@ -1,7 +1,7 @@
 .sidebar {
   width: 220px;
   height: 100vh;
-  background-color: #1e293b;
+  background-color: #303b60;
   color: #f1f5f9;
   padding: 1.5rem;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
 .sidebar h2 {
   margin: 0 0 1rem 0;
   font-size: 1.25rem;
-  color: #38bdf8;
+  color: #F1F5F9;
 }
 
 .sidebar ul {
@@ -39,11 +39,14 @@
   color: #0ea5e9;
 }
 
-/* Main content should account for the sidebar */
 .dashboard-main {
   margin-left: 220px;
   padding: 2rem;
   min-height: 100vh;
   background-color: #f8fafc;
   color: #0f172a;
+}
+
+a.under-construction {
+  color: #fcb38c
 }

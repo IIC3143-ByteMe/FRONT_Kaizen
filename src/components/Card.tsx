@@ -1,6 +1,5 @@
 import React from "react";
 
-/* Contenedor exterior */
 export const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -13,7 +12,6 @@ export const Card = React.forwardRef<
 ));
 Card.displayName = "Card";
 
-/* Cuerpo interior con padding */
 export const CardContent: React.FC<
   React.HTMLAttributes<HTMLDivElement>
 > = ({ className = "", ...props }) => (

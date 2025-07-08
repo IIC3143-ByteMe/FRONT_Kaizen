@@ -65,6 +65,8 @@ export default function Login() {
           Entrar
         </Button>
       </form>
+      {/* <img src="kaizen-logo.jpeg" alt="Imagen" /> */}
+      <div className='filler'></div>
     </div>
     </>
   );

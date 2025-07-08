@@ -12,10 +12,11 @@ export default function HabitTemplates() {
   const [templates, setTemplates] = useState<HabitTemplateComponentType[] | undefined>(undefined);  // hacer props de habits
   const [isLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
-  const apiUrl = import.meta.env.VITE_API_URL;
-
+  
   useEffect(() => {
+
+    const apiUrl = import.meta.env.VITE_API_URL;
+    
     async function fetchTemplates() {
       try {
         const res = await fetch(`${apiUrl}/habits/templates`, {
@@ -28,7 +29,7 @@ export default function HabitTemplates() {
         if (!res.ok) throw new Error("Failed to fetch.")
           
           const data: HabitTemplateComponentType[] = await res.json();
-          console.log("Server response: ", data);
+          console.log("Server response:", data);
 
         if (data.length === 0){
           console.warn("No hay templates creados")
@@ -43,6 +44,10 @@ export default function HabitTemplates() {
 
     fetchTemplates();
   }, [])
+
+  async function handleDeleteTemplate(){
+    console.log("deleting habit");
+  }
 
   return (  
     <div className="container">
@@ -59,9 +64,8 @@ export default function HabitTemplates() {
 
         <div className="tus-plantillas-container">
           <p className="title">Tus Plantillas</p>
-                {/* Lista de plantillas */}
           {templates?.length ? (
-            templates.map((template) => <HabitTemplateComponent key={template.id} template={template}/>)
+            templates.map((template) => <HabitTemplateComponent key={template.id} template={template} deleteFunction={handleDeleteTemplate}/>)
           ) : (
             !isLoading && <p>Aún no has creado plantillas.</p>
           )}
