@@ -8,7 +8,8 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["@testing-library/jest-dom"]
   },
   "include": ["src", "**/*.test.ts", "**/*.test.tsx", "jest.setup.ts"]
 }
