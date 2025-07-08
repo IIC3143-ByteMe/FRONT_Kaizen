@@ -6,12 +6,8 @@ export interface Option<T extends string = string> {
     value: T;
 }
 
-// TODO: Como futura nota de desarrollo, hay que considerar el escenario de que 
-// al escalar la cantidad de atributos en un dropdown, el atributo value tenga que
-// ser de un tipo distinto a string o string[], probablemente uno más versátil para valores que 
-// no se puedan interpretar como strings (como el caso de "icon"). Esto se podría hacer extendiendo T
-
 interface DropdownProps<T extends string | string[]> {
+    id?: string;
     label?: string;
     options?: Option[];
     value: T;
@@ -19,8 +15,8 @@ interface DropdownProps<T extends string | string[]> {
     multiple?: boolean;
 }
 
-// sacado de las plantillas de Dropdown de la página de React
 export default function Dropdown<T extends string | string[]>({
+    id = "",
     label,
     options = [],
     value,
@@ -43,12 +39,11 @@ export default function Dropdown<T extends string | string[]>({
             {label && <span className="font-medium">{label}</span>}
 
             <select
-            // TODO: cambiar directamente en este componente el estilo al de la app
             className="select-item"
             value={value as unknown as string | string[]}
             onChange={handleChange}
             multiple={multiple}
-            id={multiple ? "multiple-item" : undefined}
+            id={id ? id : undefined}
             size={multiple ? Math.min(options.length, 8) : undefined}
             > 
 
@@ -59,7 +54,7 @@ export default function Dropdown<T extends string | string[]>({
             )}
 
             {options?.map((o) => (
-                <option className="option-item" key={o.value} value={o.value}>
+                <option key={o.value} value={o.value} style={id === "icon-color" ? {color: o.value} : undefined}>
                     {o.label}
                 </option>
             ))}

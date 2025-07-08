@@ -6,11 +6,8 @@ import { getToken } from "../lib/auth";
 import "../styles/CreateHabitTemplate.css"
 import Button from "../components/Button/Button";
 
-
 const apiUrl = import.meta.env.VITE_API_URL
 
-// NOTE: para futuras releases, implementar un componente como el IconSelector de mobile, el cual es más visual
-// Para la release v0.1 del panel de administradores, esta feature no fue considerada por un tradeoff de tiempo-calidad
 const iconOptions: Option[] = [
     {label: "Correr", value: "running"},
     {label: "Mancuerna", value: "dumbbell"},
@@ -40,8 +37,7 @@ const iconOptions: Option[] = [
     
 ]
 
-// TODO: para mejor legibilidad, label debería cambiar al ser el nombre del color
-// TASK: probar en color picker y definir label de color al ojo
+
 const colorOptions: Option[] = [
   '#A4B1FF', '#FFB6A4', '#A4FFDA', '#FFC8A4', '#A4D6FF', 
   '#D1A4FF', '#FFB4A4', '#A4FFB1', '#FFC5A4', '#A4FFF7',
@@ -93,23 +89,21 @@ const taskDaysOptions: Option[] = [
     {label: "Domingo", value: "Sun"},
 ]
 
-// const ikigaiCategoryOptions: Option[] = [
-//     'Misión', 'Pasión', 'Vocación', 'Profesión'
-// ].map((o) => ({label: String(o), value: String(o)}))
-
 const goalPeriodOptions: Option[] = [
-    {label: "Diariamente", value: "daily"}
-    // NOTE: Para futuras releases de la aplicación se podría considerar hacer háitos con otros objetivos de tiempo
-    // (tales como Semanalmente, Mensualmente, Personalizar, etc)
+    {label: "Diariamente", value: "daily"},
+    // proximamente aquí iria tambien semanalmente y mensualmente
+
 ]
 
 export default function CreateHabitTemplate() {
 
+    const [feedback, setFeedback] = useState<"" | "ok" | "error">("");
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [icon, setIcon] = useState(''); // running
-    const [color, setColor] = useState(''); // #A4B1FF
-    const [group, setGroup] = useState(''); // Healthy
+    const [icon, setIcon] = useState('');
+    const [color, setColor] = useState('');
+    const [group, setGroup] = useState('');
     const [habit_type, setHabitType] = useState('');
     const [goal_period, setGoalPeriod] = useState('');
     const [goal_value, setGoalValue] = useState('');
@@ -118,13 +112,24 @@ export default function CreateHabitTemplate() {
     const [task_days, setTaskDays] = useState<string[]>(["Mon", "Tue", "Wed", "Thu", "Fri"]);
     const [reminders, setReminders] = useState<string[]>(["08:00"]);
 
-    // const [ikigai_category, setIkigaiCategory] = useState('');
-
-    // const [published, setPublished] = useState(false);
-    // NOTE: por lógica del flujo, published debe setearse a la hora de mandar la request, se deja comentado por si es que eventualmente se quiere cambiar el flujo
+    function resetForm() {
+        setTitle("");
+        setDescription("");
+        setIcon("");
+        setColor("");
+        setGroup("");
+        setHabitType("");
+        setGoalPeriod("");
+        setGoalValue("");
+        setGoalValueUnit("");
+        setGoalType("");
+        setTaskDays(["Mon", "Tue", "Wed", "Thu", "Fri"]);
+        setReminders(["08:00"]);
+    }
 
     async function handleSubmit(e: React.FormEvent){
         e.preventDefault()
+        setFeedback("");
 
         const goal = {
             period: goal_period,
@@ -140,17 +145,12 @@ export default function CreateHabitTemplate() {
             color,
             group,
             type: habit_type,
-
             goal,
             task_days,
             reminders,
-
-            // ikigai_category,
-
             published: true
         };
 
-        // NOTE: Descomenten cuando se quiera testear, pero no dejar en consola, no lo debería poder ver el cliente
         console.log("Enviando datos: ", data);
 
        fetch(`${apiUrl}/habits/templates`, {
@@ -166,6 +166,10 @@ export default function CreateHabitTemplate() {
        .then((data) => {
         console.log(JSON.stringify([data]))
         console.log("Respuesta del servidor:", data)
+
+        setFeedback("ok");
+        resetForm();
+
        })
        .catch((error) => {
         console.error("Error al enviar los datos:", error)
@@ -175,8 +179,15 @@ export default function CreateHabitTemplate() {
     return(
         <main className="container">
             <Sidebar />
-            {/* <h1 className="text-2xl font-semibold mb-4">Crear Template</h1> */}
             <h2 className="title">Crear Plantilla</h2>
+
+            {feedback === "ok" && (
+                <p className="success-message">Plantilla creada!</p>
+            )}
+
+            {feedback == "error" &&  (
+                <p className="error-message">Hubo un error con la creación de la plantilla</p>
+            )}
 
              <form onSubmit={handleSubmit} className="forms">
 
@@ -216,6 +227,7 @@ export default function CreateHabitTemplate() {
                         options={colorOptions}
                         value={color}
                         onChange={setColor}
+                        id="icon-color"
                     />
                 </div>
 
@@ -285,6 +297,7 @@ export default function CreateHabitTemplate() {
                     options={taskDaysOptions}
                     value={task_days}
                     onChange={setTaskDays}
+                    id="multiple"
                     />
                 </div>
 

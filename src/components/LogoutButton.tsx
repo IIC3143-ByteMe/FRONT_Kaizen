@@ -14,5 +14,3 @@ export default function LogoutButton() {
     </button>
   )
 }
-// This LogoutButton component allows users to log out by removing the token from localStorage
-// and redirecting them to the login page. It can be used in the DashboardLayout or any other component where a logout option is needed.   

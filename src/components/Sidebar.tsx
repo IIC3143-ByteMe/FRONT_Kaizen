@@ -8,13 +8,13 @@ export default function Sidebar() {
       <h2>Panel de Administrador</h2>
       <ul>
         <li>
-          <Link to="/users">Usuarios</Link>
-        </li>
-        <li>
           <Link to="/templates">Plantillas de Hábitos</Link>
         </li>
         <li>
-          <Link to="/analytics">Estadísticas</Link>
+          <Link className="under-construction" to="/analytics">Estadísticas</Link>
+        </li>
+        <li>
+          <Link className="under-construction" to="/users">Usuarios</Link>
         </li>
         <li>
           <LogoutButton />

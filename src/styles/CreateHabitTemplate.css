@@ -50,6 +50,6 @@
     width: 118%;
 }
 
-.select-item[multiple] {
+#multiple {
     min-height: 145px;
 }

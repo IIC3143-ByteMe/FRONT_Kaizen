@@ -1,23 +1,17 @@
-/* --- estilos base compartidos --- */
 .button {
-  /* inline-flex items-center justify-center */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   
   margin: 3px;
 
-  /* rounded-lg */
-  border-radius: 1.5rem;            /* ≈8 px */
+  border-radius: 1.5rem;        
 
-  /* px-4 py-2 */
-  padding: 0.5rem 1rem;             /* 8 px × 16 px */
+  padding: 0.5rem 1rem;   
 
-  /* text-sm font-medium */
-  font-size: 0.875rem;              /* 14 px */
+  font-size: 0.875rem;         
   font-weight: 500;
 
-  /* transición de colores */
   transition:
     color 0.2s ease-in-out,
     background-color 0.2s ease-in-out,
@@ -35,7 +29,6 @@
   cursor: not-allowed;
 }
 
-/* --- variantes --- */
 .button--primary {
   background-color: #6a8cfb;
   color: #ffffff;
@@ -47,19 +40,20 @@
 
 .button--primary:focus {
   outline-color: #819DFB;
-  color: #a0a0a0;
+  color: #ffffff;
 }
 
 .button--secondary {
-  background-color: #f3f4f6;
+  background-color: #eaebee;
   color: #111827;     
 }
 
 .button--secondary:hover:not(:disabled) {
-  background-color: #e5e7eb;        /* gray-200 */
+  background-color: #e5e7eb;        
+  color: #111827;
 }
 
 .button--secondary:focus {
-  outline-color: #d1d5db;           /* gray-300 */
+  outline-color: #d1d5db;          
   color: #a0a0a0;
 }
