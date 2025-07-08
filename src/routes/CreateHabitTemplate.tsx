@@ -1,99 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdown";
-import type { Option } from "../components/Dropdown";
+// import type { Option } from "../components/Dropdown";
 import Sidebar from "../components/Sidebar";
 import { getToken } from "../lib/auth";
 import "../styles/CreateHabitTemplate.css"
 import Button from "../components/Button/Button";
+import { iconOptions, colorOptions, habitGroupsOptions,
+    habitTypeOptions, goalValueUnitOptions, 
+    taskDaysOptions, goalPeriodOptions } from "../constants/habitOptions"
 
 const apiUrl = import.meta.env.VITE_API_URL
 
-const iconOptions: Option[] = [
-    {label: "Correr", value: "running"},
-    {label: "Mancuerna", value: "dumbbell"},
-    {label: "Libro", value: "book"},
-    {label: "Cerebro", value: "brain"},
-    {label: "Cama", value: "bed"},
-    {label: "Usuarios", value: "users"},
-    {label: "Alcancía", value: "piggy-bank"},
-    {label: "Pincel", value: "paint-brush"},
-    {label: "Avión", value: "plane"},
-    {label: "Manzana", value: "apple-alt"},
-    {label: "Agua", value: "water"},
-    {label: "Idioma", value: "language"},
-    {label: "Boton apagado", value: "power-off"},
-    {label: "Utensilios", value: "utensils"},
-    {label: "Corazón", value: "heart"},
-    {label: "Música", value: "music"},
-    {label: "Código", value: "code"},
-    {label: "Café", value: "coffee"},
-    {label: "Lápiz", value: "pen"},
-    {label: "Sol", value: "sun"},
-    {label: "Luna", value: "moon"},
-    {label: "Bicicleta", value: "bicycle"},
-    {label: "Medicina", value: "medkit"},
-    {label: "Graduación", value: "graduation-cap"},
-    {label: "Hoja", value: "leaf"},
-    
-]
 
-
-const colorOptions: Option[] = [
-  '#A4B1FF', '#FFB6A4', '#A4FFDA', '#FFC8A4', '#A4D6FF', 
-  '#D1A4FF', '#FFB4A4', '#A4FFB1', '#FFC5A4', '#A4FFF7',
-  '#FFD84A', '#FF7070', '#70FF94', '#70C5FF', '#E870FF',
-  '#B1B1B1', '#FFAA55', '#5E7CFF', '#55BDFF', '#FF55BD'
-].map((o) => ({label: String(o), value: String(o)}));
-
-// Poner el icono aquí altiro
-const habitGroupsOptions: Option[] = [
-    {label: "Salud", value: "Healthy"},
-    {label: "Deporte", value: "Fitness"},
-    {label: "Salud Mental", value: "Mental Health"},
-    {label: "Productividad", value: "Productivity"},
-    {label: "Sueño", value: "Sleep"},
-    {label: "Social", value: "Social"},
-    {label: "Finanzas", value: "Finance"},
-    {label: "Hobbies", value: "Hobbies"},
-    {label: "Lectura", value: "Reading"},
-    {label: "Viajes", value: "Travel"},   
-]
-
-const habitTypeOptions: Option[] = [
-    {label: "Hacer", value: "Build"},
-    {label: "Dejar", value: "Quit"}
-]
-
-const goalTypeOptions: Option[] = [
-    {label: "Deslizar", value: "slider"},
-    {label: "Chequear", value: "boolean"}
-]
-
-const goalValueUnitOptions: Option[] = [
-    {label: 'veces', value: 'times'},
-    {label: 'minutos', value: 'minutes'},
-    {label: 'horas', value: 'hours'},
-    {label: 'pasos', value: 'steps'},
-    {label: 'ml', value: 'ml'},
-    {label: 'km', value: 'km'},
-    {label: 'gr', value: 'gr'}, 
-]
-
-const taskDaysOptions: Option[] = [
-    {label: "Lunes", value: "Mon"},
-    {label: "Martes", value: "Tue"},
-    {label: "Miércoles", value: "Wed"},
-    {label: "Jueves", value: "Thu"},
-    {label: "Viernes", value: "Fri"},
-    {label: "Sábado", value: "Sat"},
-    {label: "Domingo", value: "Sun"},
-]
-
-const goalPeriodOptions: Option[] = [
-    {label: "Diariamente", value: "daily"},
-    // proximamente aquí iria tambien semanalmente y mensualmente
-
-]
 
 export default function CreateHabitTemplate() {
 
@@ -111,6 +29,16 @@ export default function CreateHabitTemplate() {
     const [goal_type, setGoalType] = useState('');
     const [task_days, setTaskDays] = useState<string[]>(["Mon", "Tue", "Wed", "Thu", "Fri"]);
     const [reminders, setReminders] = useState<string[]>(["08:00"]);
+
+    useEffect(() => {
+        if (parseInt(goal_value) === 1) {
+            setGoalType('Check');
+        } else if (parseInt(goal_value) >= 2 && parseInt(goal_value) <= 5) {
+            setGoalType('Sum');
+        } else if (parseInt(goal_value) > 5) {
+            setGoalType('Slide');
+        }
+    }, [goal_value]);
 
     function resetForm() {
         setTitle("");
@@ -151,7 +79,7 @@ export default function CreateHabitTemplate() {
             published: true
         };
 
-        console.log("Enviando datos: ", data);
+        // console.log("Enviando datos: ", data);
 
        fetch(`${apiUrl}/habits/templates`, {
         method: "POST",
@@ -257,17 +185,6 @@ export default function CreateHabitTemplate() {
                     onChange={setGoalPeriod}
                     />
                 </div>
-
-
-                <div className="input-item">
-                    <Dropdown
-                    label="Tipo de hábito"
-                    options={goalTypeOptions}
-                    value={goal_type}
-                    onChange={setGoalType}/>
-                </div>
-
-
 
                 <div className="input-item">
                     <label className="label-text">Cantidad de la meta</label>
