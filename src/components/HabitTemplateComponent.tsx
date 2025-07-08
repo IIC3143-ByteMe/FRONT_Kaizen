@@ -8,14 +8,14 @@ interface Props {
 
 export default function HabitTemplateComponent({ template }: Props) { 
     return (
-    <div className="container">
-        <div>
-            <p className="habit-name">{template.habitName}</p>
+    <div className="habit-container">
+        <div className="name-and-buttons-container">
+            <p className="habit-name">{template.title}</p>
             <Button variant="primary">Editar</Button>
             <Button variant="secondary">Eliminar</Button>
         </div>
-        <div>
-            <p className="habit-description">{template.habitDescription}</p>
+        <div className="description-container">
+            <p className="habit-description">{template.description}</p>
         </div>
     </div>
     );

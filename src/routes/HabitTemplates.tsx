@@ -25,10 +25,10 @@ export default function HabitTemplates() {
             ...(getToken() ? {"Authorization": `Bearer ${getToken()}`} : {})
           }
         });
-        console.log("Server response: ", res);
         if (!res.ok) throw new Error("Failed to fetch.")
-
-        const data: HabitTemplateComponentType[] = await res.json();
+          
+          const data: HabitTemplateComponentType[] = await res.json();
+          console.log("Server response: ", data);
 
         if (data.length === 0){
           console.warn("No hay templates creados")
@@ -58,10 +58,10 @@ export default function HabitTemplates() {
         {isLoading && !isError && <p>Cargando…</p>}
 
         <div className="tus-plantillas-container">
-          <p className="subtitle">Tus Plantillas</p>
+          <p className="title">Tus Plantillas</p>
                 {/* Lista de plantillas */}
           {templates?.length ? (
-            templates.map((template) => <HabitTemplateComponent key={template.habitName} template={template}/>)
+            templates.map((template) => <HabitTemplateComponent key={template.id} template={template}/>)
           ) : (
             !isLoading && <p>Aún no has creado plantillas.</p>
           )}

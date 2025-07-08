@@ -4,6 +4,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  
+  margin: 3px;
 
   /* rounded-lg */
   border-radius: 1.5rem;            /* ≈8 px */
@@ -45,6 +47,7 @@
 
 .button--primary:focus {
   outline-color: #819DFB;
+  color: #a0a0a0;
 }
 
 .button--secondary {
@@ -58,4 +61,5 @@
 
 .button--secondary:focus {
   outline-color: #d1d5db;           /* gray-300 */
+  color: #a0a0a0;
 }
