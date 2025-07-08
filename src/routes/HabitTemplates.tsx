@@ -42,7 +42,7 @@ export default function HabitTemplates() {
     }
 
     fetchTemplates();
-  }, [])
+  }, [apiUrl])
 
   return (  
     <div className="container">

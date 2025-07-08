@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+
 import { TextEncoder, TextDecoder } from 'util';
 
 // @ts-expect-error globalThis might not have TextEncoder in Node test environment
