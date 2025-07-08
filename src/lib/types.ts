@@ -1,4 +1,5 @@
 export interface HabitTemplateComponentType {
-    habitName: string;
-    habitDescription: string;
+    id: string;
+    title: string;
+    description: string;
 }
