@@ -46,10 +46,6 @@ export default function HabitTemplates() {
     fetchTemplates();
   }, [apiUrl])
 
-  async function handleDeleteTemplate(){
-    console.log("deleting habit");
-  }
-
   return (  
     <div className="container">
       <Sidebar />
@@ -61,12 +57,11 @@ export default function HabitTemplates() {
         </Button>
 
         {isError && <p style={{ color: "red" }}>Error al cargar las plantillas.</p>}
-        {isLoading && !isError && <p>Cargando…</p>}
 
         <div className="tus-plantillas-container">
           <p className="title">Tus Plantillas</p>
           {templates?.length ? (
-            templates.map((template) => <HabitTemplateComponent key={template.id} template={template} deleteFunction={handleDeleteTemplate}/>)
+            templates.map((template) => <HabitTemplateComponent key={template.id} template={template} />)
           ) : (
             !isLoading && <p>Aún no has creado plantillas.</p>
           )}
